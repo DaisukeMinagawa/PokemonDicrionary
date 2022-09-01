@@ -15,6 +15,7 @@ function App() {
   useEffect(() => {
     const fetchPokemonData = async () => {
       let res = await getAllPokemon(initialURL);
+      console.log(res);
       //Get Pokemon's detail data
       loadPokemon(res.results);
       // console.log(res.results);
@@ -42,12 +43,12 @@ function App() {
     setLoading(true);
     let data = await getAllPokemon(nextURL);
     await loadPokemon(data.results);
-    setNextURL(data.next);
+    setNextURL(data.previous);
     setLoading(false);
   }
   const handlePrevPage = async () => {
     console.log(prevURL);
-    if (!prevURL) return;
+    if (prevURL == null) return;
 
     setLoading(true);
     let data = await getAllPokemon(prevURL);
