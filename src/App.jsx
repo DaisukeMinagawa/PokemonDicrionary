@@ -43,7 +43,8 @@ function App() {
     setLoading(true);
     let data = await getAllPokemon(nextURL);
     await loadPokemon(data.results);
-    setNextURL(data.previous);
+    setNextURL(data.next);
+    setPrevURL(data.previous);
     setLoading(false);
   }
   const handlePrevPage = async () => {
@@ -55,7 +56,6 @@ function App() {
     await loadPokemon(data.results);
     setNextURL(data.next);
     setPrevURL(data.previous);
-    console(data.previous);
     setLoading(false);
   }
 
